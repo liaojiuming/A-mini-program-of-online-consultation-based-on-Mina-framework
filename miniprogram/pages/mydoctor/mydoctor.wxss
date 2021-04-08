@@ -1,0 +1,9 @@
+/* miniprogram/pages/mydoctor/mydoctor.wxss */
+.text{
+  display: block;
+  font-size: 24rpx;
+  text-align: center;
+  margin: 0 auto;
+  line-height: 1;
+  color: rgb(22, 230, 74);
+}

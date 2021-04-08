@@ -1,0 +1,40 @@
+<!--index.wxml-->
+<view class="container">
+
+  <view class="search">
+    <navigator url="/pages/search/search" class="input">
+      <image class="icon"></image>
+      <text class="txt">搜索疾病、科室、医生</text>
+    </navigator>
+  </view>
+
+  <view class="page-body">
+    <view class="page-section page-section-spacing swiper">
+      <swiper indicator-dots="{{indicatorDots}}"
+        autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+        <block wx:for="{{background}}" wx:key="*this">
+          <swiper-item>
+            <view class="image">
+              <image class="image" src="../../static/images/yiyuan.jpg"></image>
+            </view>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+  </view>
+
+  <view>
+    <text class="txt">\n特色门诊\n</text>
+  </view>
+  <view class="banner">
+    <image class="image" src="../../static/images/yiyuan.jpg"></image>
+  </view>
+
+  <view>
+    <text class="txt">\n明星医生\n</text>
+  </view>
+  <view class="banner">
+    <image class="image" src="../../static/images/yiyuan.jpg"></image>
+  </view>
+
+</view>

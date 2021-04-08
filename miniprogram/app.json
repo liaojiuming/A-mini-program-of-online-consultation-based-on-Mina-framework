@@ -1,0 +1,67 @@
+{
+  "pages": [
+    "pages/main/main",
+    "pages/mydoctor/mydoctor",
+    "pages/record/record",
+    "pages/ucenter/index/index",
+    "pages/index/index",
+    "pages/userConsole/userConsole",
+    "pages/storageConsole/storageConsole",
+    "pages/databaseGuide/databaseGuide",
+    "pages/addFunction/addFunction",
+    "pages/deployFunctions/deployFunctions",
+    "pages/chooseLib/chooseLib",
+    "pages/openapi/openapi",
+    "pages/openapi/serverapi/serverapi",
+    "pages/openapi/callback/callback",
+    "pages/openapi/cloudid/cloudid",
+    "pages/im/im",
+    "pages/im/room/room",
+    "pages/search/search"
+  ],
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#ccc",
+    "navigationBarTitleText": "线上问诊小程序",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "backgroundColor": "#fafafa",
+    "borderStyle": "white",
+    "selectedColor": "#b4282d",
+    "color": "#bfbfbf",
+    "list": [
+      {
+        "pagePath": "pages/main/main",
+        "iconPath": "static/images/shouye1.png",
+        "selectedIconPath": "static/images/shouye2.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/mydoctor/mydoctor",
+        "iconPath": "static/images/yisheng1.png",
+        "selectedIconPath": "static/images/yisheng2.png",
+        "text": "我的医生"
+      },
+      {
+        "pagePath": "pages/record/record",
+        "iconPath": "static/images/jilu1.png",
+        "selectedIconPath": "static/images/jilu2.png",
+        "text": "问诊记录"
+      },
+      {
+        "pagePath": "pages/ucenter/index/index",
+        "iconPath": "static/images/wode1.png",
+        "selectedIconPath": "static/images/wode2.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2"
+}
