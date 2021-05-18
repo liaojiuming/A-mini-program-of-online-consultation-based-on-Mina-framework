@@ -1,0 +1,15 @@
+<!--miniprogram/pages/news/news.wxml-->
+<view class="container">
+  <!-- 头部区域：标题、作者、日期等 -->
+  <view class="head">
+    <view class="title">{{article.title}}</view>
+    <view class="author">
+      <text>{{article.author}}</text>
+      <text class="time">{{time}}</text>
+    </view>
+  </view>
+
+    <view class="article">
+          <rich-text nodes="{{article.article}}"></rich-text>
+    </view>
+</view>

@@ -1,0 +1,39 @@
+/* miniprogram/pages/ucenter/changeSex/changeSex.wxss */
+
+.container{
+  background: #f4f4f4;
+  min-height: 100%;
+  padding-top: 30rpx;
+}
+
+.menu{
+  margin-top: 30rpx;
+}
+
+.fb-type{
+  height: 96rpx;
+  width: 100%;
+  background: #fff;
+  margin-bottom: 20rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 30rpx;
+  }
+  
+  .fb-type .type-label{
+  height: 36rpx;
+  color:#333;
+  font-size: 35rpx;
+  }
+  
+  .fb-type .type-icon{
+  height: 28rpx;
+  width: 28rpx;
+  margin-left : 480rpx;
+  }
+
+  .btn{
+    margin-top:50rpx;
+    width: 100%;
+  }

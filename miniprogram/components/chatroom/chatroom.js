@@ -3,12 +3,12 @@ const SETDATA_SCROLL_TO_BOTTOM = {
   scrollTop: 100000,
   scrollWithAnimation: true,
 }
-
 Component({
   properties: {
     envId: String,
     collection: String,
     groupId: String,
+    getUser:String,     //消息接收方的id
     groupName: String,
     userInfo: Object,
     onGetUserInfo: {
@@ -18,14 +18,29 @@ Component({
       type: Function,
     },
   },
-
   data: {
+    getUserInfo:null,   //消息接收方信息
     chats: [],
     textInputValue: '',
     openId: '',
     scrollTop: 0,
     scrollToMessage: '',
     hasKeyboard: false,
+  },
+
+  //自定义组件生命周期函数
+  lifetimes: {
+    attached: function() {
+      // 在组件实例进入页面节点树时执行
+    },
+    detached: function() {
+      // 在组件实例被从页面节点树移除时执行
+      resetUnreadCount(this.db, this, Date.now())    //离开聊天页面，未读数清零
+
+      if(this.messageListener){
+        this.messageListener.close();
+      }
+    },
   },
 
   methods: {
@@ -54,11 +69,11 @@ Component({
         })
         const db = this.db
         const _ = db.command
-
+        //resetUnreadCount(db, this, Date.now())    //进入聊天页面，未读数清零
         const { data: initList } = await db.collection(collection).where(this.mergeCommonCriteria()).orderBy('sendTimeTS', 'desc').get()
 
         console.log('init query chats', initList)
-
+                
         this.setData({
           chats: initList.reverse(),
           scrollTop: 10000,
@@ -108,7 +123,6 @@ Component({
 
     onRealtimeMessageSnapshot(snapshot) {
       console.warn(`收到消息`, snapshot)
-
       if (snapshot.type === 'init') {
         this.setData({
           chats: [
@@ -144,6 +158,7 @@ Component({
         }
         this.setData({
           chats: chats.sort((x, y) => x.sendTimeTS - y.sendTimeTS),
+
         })
         if (hasOthersMessage || hasNewMessage) {
           this.scrollToBottom()
@@ -160,16 +175,19 @@ Component({
         const { collection } = this.properties
         const db = this.db
         const _ = db.command
-
+        var timec = require('../../utils/utils.js');
+        var time = new Date();
+        var timeTS = Date.now();
+        var that = this
         const doc = {
-          _id: `${Math.random()}_${Date.now()}`,
+          _id: `${Math.random()}_${timeTS}`,
           groupId: this.data.groupId,
           avatar: this.data.userInfo.avatarUrl,
-          nickName: this.data.userInfo.nickName,
+          nickName: (this.data.userInfo.name ? this.data.userInfo.name : this.data.userInfo.nickName),    //显示姓名或昵称
           msgType: 'text',
           textContent: e.detail.value,
-          sendTime: new Date(),
-          sendTimeTS: Date.now(), // fallback
+          sendTime: time,
+          sendTimeTS: timeTS, // fallback
         }
 
         this.setData({
@@ -187,6 +205,10 @@ Component({
 
         await db.collection(collection).add({
           data: doc,
+        })
+        .then(res=>{ 
+          addUnreadCount(db, that, timeTS)    //发送消息成功，发送未读信息
+          addList(db, that, e, timec, time, timeTS)     //添加或更新问诊记录列表
         })
 
         this.setData({
@@ -335,3 +357,108 @@ Component({
     this.fatalRebuildCount = 0
   },
 })
+
+//更新或添加问诊记录列表
+function addList(db, that, e, timec, time, timeTS) {
+  db.collection("users").where({
+    _openid: that.data.getUser
+  })
+    .get()
+    .then(res => {
+      console.log("对方信息？》》》", res)
+      if (res.data.length > 0) {
+        that.data.getUserInfo = res.data[0] //获取接收方信息，更新记录
+
+        db.collection("sys_msg")
+          .where({
+            groupId: that.data.groupId,
+          }) //如果存在则更新相应属性
+          .update({
+            data: {
+              content: e.detail.value,
+              sendTime: timec.formatTime(time, 'Y/M/D'),
+              sendTimeTS: timeTS,
+            }
+          })
+          .then(res => {
+
+            console.log("update msg success", res)
+            if (res.stats.updated == 1) {
+              //如果更新成功了一条数据什么也不做
+            }
+            else { //没有数据可更新，则添加数据
+              db.collection("sys_msg").add({
+                data: {
+                  type: 1,
+                  groupId: that.data.groupId,
+                  userIds: [that.data.openId, that.data.getUser],
+                  users: [that.data.userInfo, that.data.getUserInfo],
+                  icon: '',
+                  title: '',
+                  content: e.detail.value,
+                  sendTime: timec.formatTime(time, 'Y/M/D'),
+                  sendTimeTS: timeTS,
+                  unreadCount:0,
+                }
+              })
+                .then(res => {
+                  console.log("add msg success", res)
+                })
+            }
+          })
+      }
+    })
+}
+
+
+//添加未读消息
+function addUnreadCount(db, that, timeTS) {
+  db.collection("unread_count")
+    .where({
+      groupId: that.data.groupId,
+      userId: that.data.getUser
+    })
+    .update({
+      data: {
+        count:db.command.inc(1),
+        sendTimeTS: timeTS,
+      }
+    })
+    .then(res => {
+      console.log("添加未读消息成功",res)
+      if (res.stats.updated == 1) { } //如果更新成功，说明对方已存在该聊天下的未读数
+      else {                          //不存在则创建
+        db.collection("unread_count") 
+        .add({
+            data: {
+              groupId: that.data.groupId,
+              userId: that.data.getUser,
+              count: 1,
+              sendTimeTS: timeTS,
+            }
+          }).then(res=>{
+            console.log("创建未读消息成功",res)
+          })
+      }
+    })
+}
+//退出聊天页面，未读消息清零
+function resetUnreadCount(db, that, timeTS){
+  db.collection("unread_count")
+    .where({
+      groupId: that.data.groupId,
+      userId: that.data.openId
+    })
+    .update({
+      data: {
+        count:0,
+        sendTimeTS: timeTS,
+      }
+    })
+    .then(res=>{
+      console.log("未读消息清零",res)
+    })
+}
+
+
+

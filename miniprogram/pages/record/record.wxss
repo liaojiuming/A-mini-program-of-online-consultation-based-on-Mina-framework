@@ -1,1 +1,116 @@
 /* miniprogram/pages/record/record.wxss */
+.page{
+  width: 100%;
+  background: #f4f4f4;
+}
+
+.vi{
+  margin-top: 100rpx;
+}
+.vi .text{
+  display: block;
+  font-size: 32rpx;
+  text-align: center;
+  margin: 0 auto;
+  line-height: 1;
+  color:#333;
+}
+
+.line {
+  width: 100%;
+  height: 1px;
+  background-color: #f0f0f0;
+}
+
+.msg-item {
+  width: 100%;
+  height: 100rpx;
+  background-color: #fff;
+  padding: 20rpx 20rpx;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.msg-item .msg-image {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 20%;
+  background-color: #f0f0f0;
+}
+
+.msg-item .msg-content {
+  width: 60rpx;
+  height: 80rpx;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.msg-item .msg-content .msg-content-head {
+  width: 620rpx;
+  height: 50rpx;
+  display: flex;
+}
+
+.msg-item .msg-content .msg-content-head .msg-title {
+  font-size: 32rpx;
+  width: 450rpx;
+  line-height: 45rpx;
+  color: #3b4977;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.msg-item .msg-content .msg-content-head .msg-time {
+  font-size: 26rpx;
+  line-height: 45rpx;
+  color: #3b4977;
+  flex-grow: 1;
+  text-align: right;
+}
+
+.msg-item .msg-content .msg-text {
+  font-size: 26rpx;
+  line-height: 35rpx;
+
+  color: #696969;
+}
+
+.address-book {
+  background-color: #fff;
+}
+
+.avatar-parent {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.avatar-image {
+  width: 60px;
+  height: 60px;
+}
+
+.nickname {
+  margin-left: 10rpx;
+  font-size: 36rpx;
+  color: black;
+}
+
+.menu{
+  margin-top: 300rpx;
+}
+.btn{
+  margin-top: 50rpx
+}
+.text{
+  display: block;
+  font-size: 34rpx;
+  text-align: center;
+  margin: 0 auto;
+  line-height: 1;
+  color:#333;
+}

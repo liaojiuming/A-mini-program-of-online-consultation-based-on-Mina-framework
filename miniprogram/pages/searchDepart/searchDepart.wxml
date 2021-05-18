@@ -1,0 +1,11 @@
+<!--miniprogram/pages/searchDepart/searchDepart.wxml-->
+<view class="container">
+  <mp-cells>
+      <block wx:for="{{doctor}}" wx:for-index="index" wx:key="*this">
+        <mp-cell link hover footer="查看详情" bindtap="onChoose" id="{{index}}">
+          <image slot="icon" class="avatar" src="{{item.userInfo.avatarUrl}}"></image>
+          <text class="name">{{item.userInfo.name}}</text>
+        </mp-cell>
+      </block>
+    </mp-cells>
+</view>

@@ -1,0 +1,93 @@
+<!--miniprogram/pages/ucenter/bedoctor/bedoctor.wxml-->
+  <view class="weui-cell">
+    <view class="weui-cell__bd">
+      <textarea class="weui-textarea" placeholder="自我介绍、从业经历、擅长方向等" style="height: 5em" bindinput="bindInput" maxlength="300" />
+      <view class="weui-textarea-counter">{{textLength}}/300</view>
+    </view>
+  </view>
+  <view class="weui-cell">
+    <view class="weui-cell__bd">
+      <view class="weui-uploader">
+          <view class="weui-uploader__hd">
+            <view class="weui-uploader__overview">
+                <view class="weui-uploader__title">上传身份证</view>
+                <view class="weui-uploader__info" wx:if="{{maxCount > 1}}">{{images1.length}}/{{maxCount}}</view>
+
+            </view>
+              <view class="weui-uploader__tips">最多上传3张</view>
+          </view>
+          <view class="weui-uploader__bd">
+              <view class="weui-uploader__files">
+                  <block wx:for="{{images1}}" wx:key="*this">
+                      <view class="weui-uploader__file" data-index="{{index}}" bindtap="previewImage1">
+                          <image class="weui-uploader__img" src="{{item}}" mode="aspectFill" />
+                      </view>
+                  </block>
+              </view>
+              <view wx:if="{{images1.length < maxCount}}" class="weui-uploader__input-box">
+                  <view class="weui-uploader__input" bindtap="chooseImage1"></view>
+              </view>
+          </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="weui-cell">
+    <view class="weui-cell__bd">
+      <view class="weui-uploader">
+          <view class="weui-uploader__hd">
+            <view class="weui-uploader__overview">
+                <view class="weui-uploader__title">上传医师资格证</view>
+                <view class="weui-uploader__info" wx:if="{{maxCount > 1}}"> {{images2.length}}/{{maxCount}} </view>
+
+            </view>
+              <view class="weui-uploader__tips">最多上传3张</view>
+          </view>
+          <view class="weui-uploader__bd">
+              <view class="weui-uploader__files">
+                  <block wx:for="{{images2}}" wx:key="*this">
+                      <view class="weui-uploader__file" data-index="{{index}}" bindtap="previewImage2">
+                          <image class="weui-uploader__img" src="{{item}}" mode="aspectFill" />
+                      </view>
+                  </block>
+              </view>
+              <view wx:if="{{images2.length < maxCount}}" class="weui-uploader__input-box">
+                  <view class="weui-uploader__input" bindtap="chooseImage2"></view>
+              </view>
+          </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="weui-cell">
+    <view class="weui-cell__bd">
+      <view class="weui-uploader">
+          <view class="weui-uploader__hd">
+            <view class="weui-uploader__overview">
+                <view class="weui-uploader__title">上传医师执业证</view>
+                <view class="weui-uploader__info" wx:if="{{maxCount > 1}}"> {{images3.length}}/{{maxCount}} </view>
+
+            </view>
+              <view class="weui-uploader__tips">最多上传3张</view>
+          </view>
+          <view class="weui-uploader__bd">
+              <view class="weui-uploader__files">
+                  <block wx:for="{{images3}}" wx:key="*this">
+                      <view class="weui-uploader__file" data-index="{{index}}" bindtap="previewImage3">
+                          <image class="weui-uploader__img" src="{{item}}" mode="aspectFill" />
+                      </view>
+                  </block>
+              </view>
+              <view wx:if="{{images3.length < maxCount}}" class="weui-uploader__input-box">
+                  <view class="weui-uploader__input" bindtap="chooseImage3"></view>
+              </view>
+          </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="weui-cell__bd"></view>
+    <view class="header">
+    <button type="primary" bindtap="clickSend" disabled="{{isClickSend}}">提 交</button>
+  </view>
+

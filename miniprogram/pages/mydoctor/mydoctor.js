@@ -1,66 +1,104 @@
 // miniprogram/pages/mydoctor/mydoctor.js
+const app = getApp();
+const db = wx.cloud.database();
+var that;
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    hasUserInfo:false,
+    myDoctor:[],    //从mydoctor中取出关注过的医生
+    index:null,
+    noneFlag:1,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    that = this;
+    this.setData({
+      hasUserInfo:app.globalData.hasUserInfo
+    })
 
+    if(that.data.hasUserInfo)
+    db.collection("mydoctor").where({
+      _openid:app.globalData.openid
+    }).get({
+      success: function(res) {
+        console.log("这是关注的医生信息",res)
+        if(res.data.length>0){
+          that.setData({
+            noneFlag:0,
+            myDoctor:res.data
+          })
+        }
+      }
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
+
+
+  onShow:function(){
+    this.setData({
+      hasUserInfo:app.globalData.hasUserInfo
+    })
+    if(that.data.hasUserInfo)
+    db.collection("mydoctor").where({
+      _openid:app.globalData.openid
+    }).get({
+      success: function(res) {
+        console.log("这是关注的医生信息",res)
+        if(res.data.length>0){
+          that.setData({
+            noneFlag:0,
+            myDoctor:res.data
+          })
+        }
+        else{
+          that.setData({
+            noneFlag:1,
+          })
+        }
+      }
+    })
+  },
+  //传递相应参数
+  doctorInfo()
+  {
+    console.log("从我的医生里选的",that.data.myDoctor[that.data.index])
+    wx.navigateTo({
+      url: '../doctorInfo/doctorInfo',
+      success: function(res) {
+        // 通过eventChannel向被打开页面传送数据
+        res.eventChannel.emit('getCartDatalist',that.data.myDoctor[that.data.index].doctorInfo)
+      }
+     })
 
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  //先获取到选择项
+  onChoose(e){
+    console.log("onchoose",e)
+    that.setData({
+      index:e.currentTarget.id,
+    })
+    console.log("onchoose",e.currentTarget.id)
+    that.doctorInfo();
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+  find(){
+    wx.switchTab({
+      url: '../main/main'
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  login(){
+    wx.switchTab({
+      url: '../ucenter/index/index'
+    })
   }
+
+
 })

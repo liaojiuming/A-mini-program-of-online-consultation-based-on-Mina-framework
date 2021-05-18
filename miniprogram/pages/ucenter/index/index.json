@@ -1,5 +1,9 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "mp-cell": "../../../miniprogram_npm/weui-miniprogram/cell/cell",
+    "mp-cells": "../../../miniprogram_npm/weui-miniprogram/cells/cells",
+    "mp-dialog": "../../../miniprogram_npm/weui-miniprogram/dialog/dialog"
+  },
   "backgroundColor": "#F6F6F6",
   "backgroundTextStyle": "light",
   "navigationBarBackgroundColor": "#ccc",

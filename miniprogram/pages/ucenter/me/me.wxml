@@ -1,0 +1,52 @@
+<!--miniprogram/pages/ucenter/me/me.wxml-->
+<view class="container">
+
+  <view class="profile-info">
+
+    <image class="avatar" src="{{userInfo? userInfo.avatarUrl : '../../../images/avatar.png'}}"></image>
+    <view class="info">
+      <text class='name'>{{userInfo.name ? userInfo.name : userInfo.nickName}}</text>
+      <view class="gc">
+        <text class="gender">性别：{{userInfo.gender}}</text>
+        <text class="age">年龄：{{userInfo.age}}</text>
+      </view>
+    </view>
+  </view>
+
+  <form bindsubmit="bindFormText">
+    <view class="lable">个人简介：</view>
+    <view wx:if="{{!userInfo.intro}}" class="fb-body">
+    <textarea placeholder="个人简介..." bindinput="bindInputa" name="text1" maxlength="300"/>
+    <view class="weui-textarea-counter">{{text1Length}}/300</view>
+    </view>
+    <view wx:else class="fb-body">
+      <textarea value="{{userInfo.intro}}" type="string"  bindinput="bindInputa" name="text1" maxlength="300"/>
+      <view class="weui-textarea-counter">{{text1Length}}/300</view>
+    </view>
+
+    <view class="lable">过往病史：</view>
+    <view wx:if="{{!userInfo.history}}" class="fb-body">
+    <textarea placeholder="过往病史、过敏史、用药史..."  bindinput="bindInputb" name="text2" maxlength="300"/>
+    <view class="weui-textarea-counter">{{text2Length}}/300</view>
+    </view>
+    <view wx:else class="fb-body"> 
+    <textarea value="{{userInfo.history}}" type="string" bindinput="bindInputb" name="text2" maxlength="300"/>
+    <view class="weui-textarea-counter">{{text2Length}}/300</view>
+    </view>
+
+    <view class="fb-mobile">
+      <view class="lable">手机号码：</view>
+      <view wx:if="{{!userInfo.phone}}" class="mobile-box">
+      <input placeholder="方便我们与您联系" type="number" name="phone" maxlength="11"/>
+      </view>
+      <view wx:else class="mobile-box"  >
+        <input value="{{userInfo.phone}}" type="number" name="phone" maxlength="11"/>
+      </view>
+    </view>
+
+
+    <button class="btn" form-type="submit" type="primary">保存</button>
+  </form>
+
+
+</view>

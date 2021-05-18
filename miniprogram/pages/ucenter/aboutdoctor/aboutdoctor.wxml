@@ -1,0 +1,53 @@
+<!--miniprogram/pages/ucenter/aboutdoctor/aboutdoctor.wxml-->
+<view class="container">
+
+<view class="profile-info">
+
+  <image class="avatar" src="{{userInfo.avatarUrl}}"></image>
+  <view class="info">
+    <text class='name'>{{userInfo.name ? userInfo.name : userInfo.nickName}}</text>
+    <view class="gc">
+      <text class="gender">性别：{{userInfo.gender}}</text>
+      <text class="age">年龄：{{userInfo.age}}</text>
+    </view>
+  </view>
+</view>
+
+<form bindsubmit="bindFormText">
+  <view class="label">自我介绍:</view>
+  <view wx:if="{{!doctorInfo.doctorIntro}}" class="fb-body">
+  <textarea placeholder="填写您的履历、擅长方向等，将对外展示在您的信息页面..." bindinput="bindInputa" name="text1" maxlength="300"/>
+  <view class="weui-textarea-counter">{{text1Length}}/300</view>
+  </view>
+  <view wx:else class="fb-body">
+    <textarea value="{{doctorInfo.doctorIntro}}" type="string"  bindinput="bindInputa" name="text1" maxlength="300"/>
+    <view class="weui-textarea-counter">{{text1Length}}/300</view>
+  </view>
+
+  <view class="fb-mobile">
+      <view class="label">请填写任职医院：</view>
+      <view wx:if="{{!doctorInfo.hospital}}" class="mobile-box">
+      <input placeholder="提供您现在任职的医院" type="string" name="text2" maxlength="20"/>
+      </view>
+      <view wx:else class="mobile-box"  >
+        <input value="{{doctorInfo.hospital}}" type="string" name="text2" maxlength="20"/>
+      </view>
+    </view>
+
+    <view class="depart">
+      <view class="label">请选择擅长科室:</view>
+      <view class="weui-cells weui-cells_after-title">
+        <checkbox-group bindchange="checkboxChange" name="department">
+          <label class="weui-cell weui-check__label" wx:for="{{items}}" wx:key="{{item._id}}">
+            <view class="weui-cell__hd">
+              <checkbox value="{{item._id}}" checked="{{item.checked}}"/>
+            </view>
+            <view class="weui-cell__bd">{{item.depart}}</view>
+          </label>
+        </checkbox-group>
+      </view>
+    </view>
+
+  <button class="btn" form-type="submit" type="primary">保存</button>
+</form>
+</view>

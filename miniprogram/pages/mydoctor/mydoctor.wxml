@@ -1,2 +1,28 @@
 <!--miniprogram/pages/mydoctor/mydoctor.wxml-->
-<text class="text">暂未关注医生，赶紧去关注一位医生吧</text>
+<view wx:if="{{hasUserInfo}}" class="page">
+  <!-- 没有查询到关注过的医生，noneFlag就为真 -->
+  <block wx:if="{{noneFlag}}">
+    <view class="menu">
+      <text class="text">暂未关注医生，赶紧去关注一位医生吧</text>
+      <button class="btn" type="primary" bindtap="find">去找医生</button>
+    </view>
+  </block>
+
+  <block wx:else>
+    <mp-cells>
+      <block wx:for="{{myDoctor}}" wx:for-index="index" wx:key="*this">
+        <mp-cell link hover footer="查看详情" bindtap="onChoose" id="{{index}}">
+          <image slot="icon" class="avatar" src="{{item.doctorInfo.userInfo.avatarUrl}}"></image>
+          <text class="name">{{item.doctorInfo.userInfo.name}}</text>
+        </mp-cell>
+      </block>
+    </mp-cells>
+  </block>
+</view>
+
+<view wx:else> 
+  <view class="menu">
+    <text class="text">您还没有登录，请先登录</text>
+      <button class="btn" type="primary" bindtap="login">去登录</button>
+    </view>
+</view>

@@ -1,0 +1,3 @@
+<!--miniprogram/pages/ucenter/tongzhi/messInfo.wxml-->
+<text class="mess">{{messInfo.message}}</text>
+<text class="time">{{time}}</text>

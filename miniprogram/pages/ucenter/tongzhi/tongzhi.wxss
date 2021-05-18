@@ -1,0 +1,32 @@
+/* miniprogram/pages/ucenter/tongzhi/tongzhi.wxss */
+page{
+  width: 100%;
+  background: #f4f4f4;
+}
+.container{
+  background: #f4f4f4;
+  height: auto;
+  overflow: hidden;
+  width: 100%;
+}
+.menu{
+  margin-top: 100rpx;
+}
+.icon {
+  height: 40px;
+  width: 40px;
+  background: #dcdcdc;
+  border-radius: 20%;
+  border: 4rpx solid #fff;
+  }
+.text{
+  display: block;
+  font-size: 34rpx;
+  text-align: center;
+  margin: 0 auto;
+  color:#333;
+}
+.cell
+.cell.txt{
+  margin-left: 50rpx;
+}

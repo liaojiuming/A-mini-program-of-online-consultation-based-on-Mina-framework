@@ -1,0 +1,11 @@
+<!--miniprogram/pages/ucenter/changeName/changeName.wxml-->
+<form bindsubmit="bindFormText">
+  <view wx:if="{{!userInfo.name}}" class="box">
+    <input placeholder="请添加您的姓名" type="string" name="name" maxlength="10" />
+    <button form-type="submit" size="mini" class="btn" type="primary">保存</button>
+  </view>
+  <view wx:else class="box">
+    <input value="{{userInfo.name}}" type="string" name="name" maxlength="10" />
+    <button form-type="submit" size="mini" class="btn" type="primary">修改</button>
+  </view>
+</form>

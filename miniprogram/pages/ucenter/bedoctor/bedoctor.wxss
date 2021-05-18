@@ -1,0 +1,14 @@
+/* miniprogram/pages/ucenter/bedoctor/bedoctor.wxss */
+
+page{
+  background-color: #fff;
+}
+.header {
+  width: 100%;
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  margin-top: 50rpx;
+  position: relative;
+  background-color: #fff;
+}

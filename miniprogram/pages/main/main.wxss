@@ -1,4 +1,10 @@
 
+.container{
+  background: #f4f4f4;
+  height: auto;
+  overflow: hidden;
+  width: 100%;
+}
 .search {
   height: 88rpx;
   width: 100%;
@@ -33,45 +39,61 @@
   font-size: 30rpx;
 }
 
-.banner {
-  width: 750rpx;
-  height: 417rpx;
-}
-
-.banner image {
+.image {
   width: 100%;
-  height: 417rpx;
+  height: 300rpx;
 }
 
-.m-menu {
+.title{
+  position: fixed;
+  left: 20rpx;
+  bottom: 20rpx;
+  font-weight: bold;
+  color: rgb(250, 250, 250);
+  font-size: 35rpx;
+}
+
+.menu{
+  width: 100%;
+  height: 400rpx;
   display: flex;
-  height: 181rpx;
-  width: 750rpx;
-  flex-flow: row nowrap;
-  align-items: center;
-  justify-content: space-between;
-  background-color: #fff;
+  flex-direction: column;
 }
+.menu .text{
+  font-weight: bold;
+  margin-top:20rpx;
+  margin-left:20rpx;
+  font-size: 32rpx;
+}
+.ava{
+  display: flex;
+  flex-direction: row;
+}
+.avata{
+  display: flex;
+  flex-direction: column;
+  height: 250rpx;
+}
+.avatar {
+  margin-top: 30rpx;
+  margin-left: 27rpx;
+  height: 148rpx;
+  width: 148rpx;
+  border-radius: 50%;
+  border: 4rpx solid #fff;
+  }
+ .name{
+   margin-left: 20rpx;
+    margin-top:20rpx;
+    text-align: center;
+    font-size: 32rpx;
+  }
 
-.m-menu .item {
-  flex: 1;
-  display: block;
-  padding: 20rpx 0;
-}
-
-.m-menu image {
-  display: block;
-  width: 58rpx;
-  height: 58rpx;
-  margin: 0 auto;
-  margin-bottom: 12rpx;
-}
-
-.m-menu text {
-  display: block;
-  font-size: 24rpx;
-  text-align: center;
-  margin: 0 auto;
-  line-height: 1;
-  color: #333;
-}
+  .depart{
+    margin-top: 30rpx;
+    margin-left: 27rpx;
+    height: 148rpx;
+    width: 148rpx;
+    border-radius: 20%;
+    border: 2rpx solid #fff;
+  }

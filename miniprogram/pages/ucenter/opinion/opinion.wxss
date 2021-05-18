@@ -1,0 +1,80 @@
+/* miniprogram/pages/ucenter/opinion/opinion.wxss */
+
+
+
+page{
+  width:100%;
+  background: #f4f4f4;
+}
+
+.container{
+  background: #f4f4f4;
+  min-height: 100%;
+  width: 100%;
+  padding-top: 30rpx;
+}
+
+.label{
+  background: #f6f6f6;
+  height: 33rpx;
+  width: 100%;
+  color: #333;
+  font-size: 28rpx;
+  font-weight: bold;
+  line-height: 33rpx;
+  margin-bottom: 10rpx;
+  margin-left: 10rpx;
+  }
+
+.fb-type{
+height: 96rpx;
+width: 100%;
+background: #fff;
+margin-bottom: 20rpx;
+display: flex;
+flex-direction: row;
+align-items: center;
+}
+
+.fb-type .type-label{
+height: 36rpx;
+color:#333;
+font-size: 28rpx;
+margin-left: 30rpx;
+}
+
+.fb-type .type-icon{
+height: 28rpx;
+width: 28rpx;
+margin-left: 430rpx;
+}
+
+.fb-body{
+  width: 95%;
+  height: 340rpx;
+  background: #fff;
+  padding-left: 30rpx;
+  margin-bottom: 20rpx;
+  }
+
+
+ .mobile{
+   
+  height: 110rpx;
+  width: 95%;
+  color: #333;
+  padding-left: 30rpx;
+  font-size: 30rpx;
+  background: #fff;
+  position: relative;
+  line-height: 50rpx;
+}
+
+
+.btn{
+  margin-top:50rpx;
+  width: 100%;
+}
+
+
+

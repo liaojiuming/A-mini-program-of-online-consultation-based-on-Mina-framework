@@ -1,0 +1,9 @@
+<!--miniprogram/pages/ucenter/youhui/youhui.wxml-->
+<view class="coupon-form">
+    <view class="input-box">
+      <input class="coupon-sn" placeholder="请输入优惠码" />
+      <image class="clear-icon" src="http://yanxuan.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/clear-fb-dd9d604f86.png"></image>
+    </view>
+    <button class="btn" size="mini" type="default">兑换</button>
+  </view>
+<text class="text" >暂无可用的优惠券</text>

@@ -1,0 +1,24 @@
+<!--miniprogram/pages/ucenter/myInfo/myInfo.wxml-->
+<view class="page">
+    <mp-cells>
+        <mp-cell link hover bindtap="showmsg">
+          <view >头像</view>
+          <image slot="footer" class="avatar" src="{{userInfo.avatarUrl}}"></image>
+        </mp-cell>
+
+        <mp-cell link hover url="/pages/ucenter/changeName/changeName">
+          <view >姓名</view>
+          <view slot="footer">{{userInfo.name}}</view>
+        </mp-cell>
+
+        <mp-cell link  hover url="/pages/ucenter/changeSex/changeSex">
+          <view>性别</view>
+          <view slot="footer">{{userInfo.gender}}</view>
+        </mp-cell>
+
+        <mp-cell link  hover url="/pages/ucenter/changeAge/changeAge">
+          <view>年龄</view>
+          <view slot="footer">{{userInfo.age}}</view>
+        </mp-cell>
+    </mp-cells>
+</view>

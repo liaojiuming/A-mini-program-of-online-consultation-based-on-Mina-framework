@@ -1,43 +1,74 @@
 <view class="container">
+
   <view class="profile-info">
-    <image bindtap="onUserInfoClick" class="avatar" src="{{userInfo.avatar}}"></image>
-    <view class="info">
-      <text class='name' bindtap='onUserInfoClick'>{{ userInfo.nickname || '点击登录' }}</text>
-      <text class='level' bindtap='onUserInfoClick'></text>
-    </view>
-   <image bindtap="onUserInfoClick" class='btn' src='/static/images/address_right.png'></image>
+
+    <!-- 未登录状态，登录提示信息 -->
+    <block wx:if="{{!hasUserInfo}}">
+      <image bindtap="onUserInfoClick" class="avatar" src="{{'../../../images/avatar.png'}}"></image>
+      <view class="info">
+        <text class='name' bindtap='onUserInfoClick'>点击登录</text>
+      </view>
+      <image bindtap="onUserInfoClick" class='btn' src='/static/images/address_right.png'></image>
+    </block>
+
+    <!-- 登录状态，显示用户信息 -->
+    <block wx:else="{{hasUserInfo}}">
+      <image bindtap="myInfo" class="avatar" src="{{userInfo.avatarUrl}}"></image>
+      <view class="info">
+        <text class='name' bindtap='myInfo' >{{userInfo.name ? userInfo.name : userInfo.nickName}}</text>
+      </view>
+      <image bindtap="myInfo" class='btn' src='/static/images/address_right.png'></image>
+    </block>
+
   </view>
+
 
   <view class="user-menu">
-    <view class="text-box">
-      <navigator url="/pages/ucenter/coupon/coupon" class="a">
-        <text class="icon coupon"></text>
-        <text class="txt">问诊优惠券</text>
-      </navigator>
-    </view>
-    <view class="text-box">
-      <navigator url="../address/address" class="a">
-        <text class="icon address"></text>
-        <text class="txt">地址管理</text>
-      </navigator>
-    </view>
-    <view class="text-box">
-      <navigator url="/pages/ucenter/feedback/feedback" class="a">
-        <text class="icon feedback"></text>
-        <text class="txt">意见反馈</text>
-      </navigator>
-    </view>
+    <mp-cells>
+        <mp-cell link bindtap="personal" hover value="个人信息"  ext-class="{{admin}}">
+            <image slot="title" src="../../../images/me.png"
+                class="icon"></image>
+        </mp-cell>
+
+      <block wx:if="{{userInfo.isdoctor}}">
+        <mp-cell link bindtap="aboutDoctor" hover value="医生设置" >
+            <image slot="title" src="../../../images/doctor.png"
+            class="icon"></image>
+        </mp-cell>
+      </block>
+      <block wx:else>
+        <mp-cell link bindtap="tobeDoctor" hover value="成为医生" >
+            <image slot="title" src="../../../images/doctor.png"
+            class="icon"></image>
+        </mp-cell>
+      </block>
+
+        <mp-cell link url="/pages/ucenter/youhui/youhui" hover value="问诊优惠券" >
+            <image slot="title" src="../../../images/youhui.png"
+            class="icon"></image>
+        </mp-cell>
+
+        <mp-cell link bindtap="toTongzhi" hover value="消息中心" >
+            <image slot="title" src="../../../images/tongzhi.png"
+            class="icon"></image>
+        </mp-cell>
+
+        <mp-cell link bindtap="toOpinion" hover value="意见反馈" >
+            <image slot="title" src="../../../images/opinion.png"
+            class="icon"></image>
+        </mp-cell>
+    </mp-cells>
   </view>
 
-  <!-- <view class="logout" bindtap="exitLogin">退出登录</view> -->
+
+  <block wx:if="{{userInfo.isadmin}}">
+      <view class="admin" bindtap="applyList">管理医生申请信息</view>
+  </block>
+
+  <block wx:if="{{hasUserInfo}}">
+    <view class="logout" bindtap="exitLogin" hover-class="view-haver">退出登录</view>
+  </block>
 </view>
 
-<view class='dialog-login' wx:if="{{showLoginDialog}}" bindtap='onCloseLoginDialog'>
-  <view class='dialog-body' catchtap='onDialogBody'>
-    <view class='title'>请选择登录方式</view>
-    <view class='content'>
-      <button type="primary" open-type="getUserInfo" bindgetuserinfo="onWechatLogin">微信登录</button>
-      <button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onWechatLogin">手机号登录</button>
-    </view>
-  </view>
-</view>
+<mp-dialog  title="请选择登录方式" show="{{showLoginDialog}}" bindbuttontap="getUserProfile" buttons="{{oneButton}}"></mp-dialog>
+

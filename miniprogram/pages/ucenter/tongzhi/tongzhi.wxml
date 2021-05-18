@@ -1,0 +1,21 @@
+<!--miniprogram/pages/ucenter/tongzhi/tongzhi.wxml-->
+<view class="page">
+  <block wx:if="{{noneFlag}}">
+    <view class="menu">
+      <text class="text">目前没有消息</text>
+    </view>
+  </block>
+
+  <block wx:else>
+    <mp-cells class="cell">
+      <block wx:for="{{someMess}}" wx:for-index="index" wx:key="*this">
+        <mp-slideview buttons="{{slideButtons}}" bindbuttontap="slideButtonTap" id="{{index}}">
+        <mp-cell link hover footer="查看详情" bindtap="onChoose" id="{{index}}">
+          <image slot="icon" class="icon" src="../../../images/tongzhi.png"></image>
+          <text class="name">{{item}}...</text>
+        </mp-cell>
+        </mp-slideview>
+      </block>
+    </mp-cells>
+  </block>
+</view>

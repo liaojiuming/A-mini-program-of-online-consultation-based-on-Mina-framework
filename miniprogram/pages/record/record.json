@@ -1,5 +1,8 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "mp-badge": "../../miniprogram_npm/weui-miniprogram/badge/badge"
+
+  },
   "backgroundColor": "#F6F6F6",
   "backgroundTextStyle": "light",
   "navigationBarBackgroundColor": "#ccc",

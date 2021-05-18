@@ -1,0 +1,18 @@
+/* miniprogram/pages/searchDepart/searchDepart.wxss */
+.container{
+  background: #f4f4f4;
+  height: auto;
+  overflow: hidden;
+  width: 100%;
+}
+.avatar {
+  height: 40px;
+  width: 40px;
+  background: #dcdcdc;
+  border-radius: 20%;
+  border: 4rpx solid #fff;
+  }
+
+  .name{
+    margin-left: 50rpx;
+  }

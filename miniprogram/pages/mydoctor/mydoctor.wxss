@@ -1,9 +1,38 @@
 /* miniprogram/pages/mydoctor/mydoctor.wxss */
+page{
+  width: 100%;
+  background: #f4f4f4;
+}
+.container{
+  background: #f4f4f4;
+  height: auto;
+  overflow: hidden;
+  width: 100%;
+}
+.menu{
+  margin-top: 300rpx;
+}
+.btn{
+  margin-top: 50rpx
+}
 .text{
   display: block;
-  font-size: 24rpx;
+  font-size: 34rpx;
   text-align: center;
   margin: 0 auto;
   line-height: 1;
-  color: rgb(22, 230, 74);
+  color:#333;
 }
+
+
+.avatar {
+  height: 40px;
+  width: 40px;
+  background: #dcdcdc;
+  border-radius: 20%;
+  border: 4rpx solid #fff;
+  }
+
+  .name{
+    margin-left: 50rpx;
+  }

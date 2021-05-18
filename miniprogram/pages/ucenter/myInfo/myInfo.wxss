@@ -1,0 +1,26 @@
+/* miniprogram/pages/ucenter/myInfo/myInfo.wxss */
+page{
+  width: 100%;
+  background: #f4f4f4;
+}
+.container{
+  background: #f4f4f4;
+  height: auto;
+  overflow: hidden;
+  width: 100%;
+}
+
+.icon{
+  margin-right: 16px;
+  vertical-align: middle;
+  width:30px; 
+  height: 30px;
+}
+
+.avatar {
+  height: 40px;
+  width: 40px;
+  background: #dcdcdc;
+  border-radius: 20%;
+  border: 4rpx solid #fff;
+  }

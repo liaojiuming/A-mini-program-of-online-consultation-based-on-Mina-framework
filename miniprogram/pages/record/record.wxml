@@ -1,2 +1,35 @@
 <!--miniprogram/pages/record/record.wxml-->
-<text>暂无问诊记录</text>
+<view class="page">
+<view wx:if="{{hasUserInfo}}">
+  <block wx:if="{{noneFlag}}">
+    <view class="vi">
+      <text class="text">暂无问诊记录</text>
+    </view>
+  </block>
+
+  <block wx:else>
+    <view class="msg-item" wx:for="{{msgList}}" bindtap="clickMsg" data-index="{{index}}">
+      <view slot="title" style="position: relative;margin-right: 10px;">
+        <image class="msg-image" src="{{item.icon}}" data-index="{{index}}"></image>
+        <mp-badge wx:if="{{item.unreadCount && item.unreadCount>0}}" content="{{item.unreadCount}}"
+      style="position: absolute;top: -.7em;right: -.4em;" />
+      </view>
+      <view class="msg-content">
+        <view class="msg-content-head">
+          <view class="msg-title">{{item.title}}</view>
+          <view class="msg-time">{{item.sendTime}}</view>
+        </view>
+        <view class="msg-text">{{item.content}}</view>
+      </view>
+    </view>
+  </block>
+</view>
+
+<view wx:else>
+  <view class="menu">
+    <text class="text">您还没有登录，请先登录</text>
+    <button class="btn" type="primary" bindtap="login">去登录</button>
+  </view>
+</view>
+
+</view>

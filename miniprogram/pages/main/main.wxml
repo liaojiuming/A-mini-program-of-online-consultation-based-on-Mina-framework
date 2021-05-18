@@ -4,37 +4,57 @@
   <view class="search">
     <navigator url="/pages/search/search" class="input">
       <image class="icon"></image>
-      <text class="txt">搜索疾病、科室、医生</text>
+      <text class="txt">搜索医生</text>
     </navigator>
   </view>
 
-  <view class="page-body">
-    <view class="page-section page-section-spacing swiper">
-      <swiper indicator-dots="{{indicatorDots}}"
-        autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
-        <block wx:for="{{background}}" wx:key="*this">
+  <view>
+    <swiper indicator-dots="{{indicatordots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="true" bindchange="bindChange">
+      <block wx:for="{{bannerUrl}}" wx:key="*this">
           <swiper-item>
-            <view class="image">
-              <image class="image" src="../../static/images/yiyuan.jpg"></image>
-            </view>
+              <image class="image" src="{{item}}" bindtap="toNews"></image>
+              <text class="title">{{title[currentBanner]}}</text>
           </swiper-item>
         </block>
       </swiper>
-    </view>
   </view>
 
-  <view>
-    <text class="txt">\n特色门诊\n</text>
+  <view class="menu">
+    <text class="text">医生推荐：</text>
+    <view class="ava">
+      <block wx:for="{{goodDoctor}}" wx:for-index="indexa" wx:key="*this">
+        <view class="avata" bindtap="onChooseDoctor" id="{{indexa}}">
+          <image class="avatar" src="{{item.userInfo.avatarUrl}}"></image>
+          <text class="name">{{item.name}}</text>
+        </view>
+      </block>
   </view>
-  <view class="banner">
-    <image class="image" src="../../static/images/yiyuan.jpg"></image>
-  </view>
-
-  <view>
-    <text class="txt">\n明星医生\n</text>
-  </view>
-  <view class="banner">
-    <image class="image" src="../../static/images/yiyuan.jpg"></image>
   </view>
 
+  <view class="menu" >
+    <text class="text">热门科室：</text>
+    
+    <view class="ava">
+      <view class="avata" bindtap="onChooseDepart" id="001">
+        <image class="depart" src="../../images/neike.png"></image>
+        <text class="name">内科</text>
+      </view>
+
+      <view class="avata" bindtap="onChooseDepart" id="004">
+        <image class="depart" src="../../images/erke.png"></image>
+        <text class="name">儿科</text>
+      </view>
+
+      <view class="avata" bindtap="onChooseDepart" id="003">
+        <image class="depart" src="../../images/pifuke.png"></image>
+        <text class="name">皮肤科</text>
+      </view>
+
+      <view class="avata" bindtap="onChooseDepart" id="008">
+        <image class="depart" src="../../images/jsk.png"></image>
+        <text class="name">精神心理科</text>
+      </view>
+    
+  </view>
+  </view>
 </view>

@@ -1,0 +1,11 @@
+/* miniprogram/pages/ucenter/tongzhi/messInfo.wxss */
+.mess{
+  margin-top: 10rpx;
+  margin-left: 30rpx;
+}
+
+.time{
+  margin-top: 30rpx;
+  margin-right: 20rpx;
+  text-align:right;
+}

@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "mp-cell": "../../../miniprogram_npm/weui-miniprogram/cell/cell",
+    "mp-cells": "../../../miniprogram_npm/weui-miniprogram/cells/cells",
+    "mp-slideview": "../../../miniprogram_npm/weui-miniprogram/slideview/slideview"
+  },
+  "navigationBarTitleText": "消息列表",
+  "enablePullDownRefresh":true
+}

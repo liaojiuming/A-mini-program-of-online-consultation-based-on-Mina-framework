@@ -1,5 +1,5 @@
 <view class="chatroom">
-  <view class="header">
+  <view class="header"  wx:if="{{1==0}}">
     <!-- display number of people in the room -->
     <view class="left"></view>
     <!-- room name -->
@@ -11,10 +11,10 @@
   <!-- chats -->
   <scroll-view 
     class="body" 
-    scroll-y 
+    scroll-y
     scroll-with-animation="{{scrollWithAnimation}}"
     scroll-top="{{scrollTop}}" 
-    scroll-into-view="{{scrollToMessage}}"
+    scroll-into-view="{{scrollToMessage}}"  
     bindscrolltoupper="onScrollToUpper"
   >
     <view 

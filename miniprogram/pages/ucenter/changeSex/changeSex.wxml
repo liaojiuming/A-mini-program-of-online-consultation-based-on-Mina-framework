@@ -1,0 +1,11 @@
+<!--miniprogram/pages/ucenter/changeSex/changeSex.wxml-->
+<view class="container">
+  <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+  <view class="fb-type">
+    <view class="type-lable">性别：{{array[index]}}</view>
+    <image class="type-icon" src="../../../images/xiala.png"></image>
+  </view>
+  </picker>
+
+  <button class="btn" bindtap="dosub" type="primary">确认</button>
+</view>

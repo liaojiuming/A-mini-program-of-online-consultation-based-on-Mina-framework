@@ -1,0 +1,38 @@
+<!--miniprogram/pages/ucenter/applyInfo/applyInfo.wxml-->
+<view class="container">
+
+    <view class="profile-info">
+
+        <image class="avatar" src="{{applyinfo.userInfo.avatarUrl}}"> </image>
+
+        <view class="info">
+            <text
+                class='name'>{{applyinfo.userInfo.name ? applyinfo.userInfo.name : applyinfo.userInfo.nickName}}</text>
+            <view class="gc">
+                <text class="gender">性别：{{applyinfo.userInfo.gender}}</text>
+                <text class="age">年龄：{{applyinfo.userInfo.age}}</text>
+            </view>
+        </view>
+    </view>
+
+    <view>
+        <text class="title">个人介绍：</text>
+        <text class="txt">{{applyinfo.content}}</text>
+    </view>
+
+    <text class="title">申请资料：</text>
+    <view class="pic">
+        <image class="image" src="{{applyinfo.images[0]}}" bindtap="show" mode="aspectFit"></image>
+
+        <mp-gallery show="{{show}}" bindchange="change" bindhide="hide" showDelete="{{false}}"
+            img-urls="{{applyinfo.images}}"></mp-gallery>
+        <text class="txt">1/{{applyinfo.images.length}}</text>
+    </view>
+
+
+    <button class="btn" type="warn" size="mini"  plain="false" bindtap="no">拒绝</button>
+    <button class="btn" type="primary" size="mini" plain="true" bindtap="yes">同意</button>
+
+
+
+</view>

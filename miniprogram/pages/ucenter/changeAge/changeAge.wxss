@@ -1,0 +1,21 @@
+/* miniprogram/pages/ucenter/changeAge/changeAge.wxss */
+  
+.box{
+  display: flex;
+  height: 90rpx;
+  line-height: 90rpx;
+  width: 100%;
+  color: #333;
+  padding-left: 30rpx;
+  padding-top: 40rpx;
+  font-size: 35rpx;
+  background: #fff;
+  position: relative;
+  }
+
+  .btn{
+    margin-right: 50rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    width: 30rpx;
+  }

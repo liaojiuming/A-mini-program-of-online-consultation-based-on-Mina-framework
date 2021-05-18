@@ -1,0 +1,14 @@
+<!--miniprogram/pages/ucenter/changeAge/changeAge.wxml-->
+<view class="">
+<form bindsubmit="bindFormText">
+  <view wx:if="{{!userInfo.age}}" class="box">
+    <input placeholder="请输入您的年龄" type="number" name="age" maxlength="2" />
+    <button form-type="submit" size="mini" class="btn" type="primary">保存</button>
+  </view>
+  <view wx:else class="box">
+    <input value="{{userInfo.age}}" type="number" name="age" maxlength="2" />
+    <button form-type="submit" size="mini" class="btn" type="primary">修改</button>
+  </view>
+</form>
+
+</view>

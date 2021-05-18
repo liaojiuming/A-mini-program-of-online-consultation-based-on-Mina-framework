@@ -1,0 +1,35 @@
+<!--miniprogram/pages/doctorInfo/doctorInfo.wxml-->
+<view class="container">
+
+  <view class="profile-info">
+
+    <image class="avatar" src="{{userInfo.avatarUrl}}"></image>
+    <view class="info">
+      <text class='name'>{{userInfo.name ? userInfo.name : userInfo.nickName}}</text>
+      <view class="gc">
+        <text class="gender">性别：{{userInfo.gender}}</text>
+        <text class="age">年龄：{{userInfo.age}}</text>
+      </view>
+      <text class="hospital">任职医院：{{doctorInfo.hospital}}</text>
+
+      <view wx:if="{{flag}}">
+        <button size="mini" type="primary"  class="star" bindtap="star" disabled="{{!flag}}">关注</button>
+      </view>
+
+      <view wx:else>
+        <button size="mini" type="warn"  class="star" bindtap="nostar" disabled="{{flag}}">已关注</button>
+      </view>
+    </view>
+  </view>
+
+<view>
+  <text class="lable">擅长方向：  </text>
+  <text class="text">{{depart}}</text>
+
+  <text class="lable">医生简介：  </text>
+  <text class="text">{{doctorInfo.doctorIntro}}</text>
+</view>
+
+
+<view class="chart" bindtap="chat" hover-class="view-hover">立即咨询</view>
+</view>

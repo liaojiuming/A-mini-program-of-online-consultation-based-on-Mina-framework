@@ -1,4 +1,5 @@
 /**app.wxss**/
+@import"./miniprogram_npm/weui-miniprogram/weui-wxss/dist/style/weui.wxss";
 .container {
   box-sizing: border-box;
   background-color: #f4f4f4;

@@ -1,0 +1,60 @@
+page{
+  background: #f4f4f4;
+  min-height: 100%;
+}
+
+.container{
+  background: #f4f4f4;
+  min-height: 100%;
+  padding-top: 30rpx;
+}
+
+.coupon-form{
+height: 110rpx;
+width: 100%;
+background: #fff;
+padding-left: 30rpx;
+padding-right: 30rpx;
+padding-top: 20rpx;
+display: flex;
+}
+
+.input-box{
+flex:3;
+height: 70rpx;
+color: #333;
+font-size: 24rpx;
+background: #fff;
+position: relative;
+border: 1px solid rgba(0, 0, 0, 0.15);
+border-radius: 4rpx;
+}
+
+.input-box .coupon-sn{
+position: absolute;
+top: 10rpx;
+left: 30rpx;
+height: 50rpx;
+width: 100%;
+color: #000;
+line-height: 50rpx;
+font-size: 24rpx;
+}
+
+.clear-icon{
+position: absolute;
+top: 21rpx;
+right: 30rpx;
+width: 28rpx;
+height: 28rpx;
+}
+
+.text{
+  text-align: center;
+  margin-top: 10rpx;
+}
+.btn{
+  flex:1;
+  margin-left: 20rpx;
+  height: 70rpx;
+}

@@ -1,0 +1,66 @@
+{
+  "setting": {},
+  "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "id": -1,
+          "name": "db guide",
+          "pathName": "pages/databaseGuide/databaseGuide",
+          "query": ""
+        },
+        {
+          "name": "申请资料",
+          "pathName": "pages/ucenter/bedoctor/bedoctor",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "个人信息",
+          "pathName": "pages/ucenter/me/me",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "首页",
+          "pathName": "pages/main/main",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "myInfo",
+          "pathName": "pages/ucenter/myInfo/myInfo",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "申请列表",
+          "pathName": "pages/ucenter/applyList/applyList",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "医生详情",
+          "pathName": "pages/doctorInfo/doctorInfo",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/index/index",
+          "pathName": "pages/index/index",
+          "query": "",
+          "scene": null
+        }
+      ]
+    }
+  }
+}
