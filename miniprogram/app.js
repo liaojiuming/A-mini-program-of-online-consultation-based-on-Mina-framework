@@ -11,7 +11,7 @@ App({
       console.error('请使用 2.2.3 或以上的基础库以使用云能力')
     } else {
       wx.cloud.init({
-        env: "xiaoming-8ggyufqu62224b90",
+        env: "你自己的云开发环境",
         traceUser: true,
       })
     }
